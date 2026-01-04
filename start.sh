@@ -10,8 +10,8 @@ SERVER_BIN="/app/MultiServer.py"
 ARGS=()
 
 # GAME_PATH: added as a positional argument (no flag)
-if [[ -n "${WORLD:-}" ]]; then
-    ARGS+=("$WORLD")
+if [[ -n "${GAME_PATH:-}" ]]; then
+    ARGS+=("$GAME_PATH")
 fi
 
 # PORT: maps to --port <value>
