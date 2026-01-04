@@ -39,7 +39,10 @@ if [[ -n "${SAVE_FILE:-}" ]]; then
     ARGS+=("--savefile" "$SAVE_FILE")
 fi
 
-#TODO disable save
+# DISABLE_SAVE: maps to --disable_save
+if [[ "${DISABLE_SAVE:-}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+    ARGS+=("--disable_save")
+fi
 
 # CERT: maps to --cert <value>
 if [[ -n "${CERT:-}" ]]; then
@@ -56,7 +59,10 @@ if [[ -n "${LOGLEVEL:-}" ]]; then
     ARGS+=("--loglevel" "$LOGLEVEL")
 fi
 
-#TODO: logtime
+# LOGTIME: maps to --logtime
+if [[ "${LOGTIME:-}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+    ARGS+=("--logtime")
+fi
 
 # LOCATION_CHECK_POINTS: maps to --location_check_points <value>
 if [[ -n "${LOCATION_CHECK_POINTS:-}" ]]; then
@@ -90,14 +96,20 @@ fi
 
 #TODO autoshutdown
 
-#TODO embeded options
+# USE_EMBEDDED_OPTIONS: maps to --use_embedded_options
+if [[ "${USE_EMBEDDED_OPTIONS:-}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+    ARGS+=("--use_embedded_options")
+fi
 
 # COMPATIBILITY: maps to --compatibility <value>
 if [[ -n "${COMPATIBILITY:-}" ]]; then
     ARGS+=("--compatibility" "$COMPATIBILITY")
 fi
 
-#TODO log network
+# LOG_NETWORK: maps to --log_network
+if [[ "${LOG_NETWORK:-}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+    ARGS+=("--log_network")
+fi
 
 # Optional: show the final command for debugging
 echo "Starting Archipelago Server:"
