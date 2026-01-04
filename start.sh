@@ -51,11 +51,6 @@ if [[ -n "${CERT_KEY:-}" ]]; then
     ARGS+=("--cert_key" "$CERT_KEY")
 fi
 
-# LOGLEVEL: maps to --levlevel <value>
-if [[ -n "${LOGLEVEL:-}" ]]; then
-    ARGS+=("--levlevel" "$LOGLEVEL")
-fi
-
 # LOGLEVEL: maps to --loglevel <value>
 if [[ -n "${LOGLEVEL:-}" ]]; then
     ARGS+=("--loglevel" "$LOGLEVEL")
@@ -86,11 +81,6 @@ fi
 # COUNTDOWN_MODE: maps to --countdown_mode <value>
 if [[ -n "${COUNTDOWN_MODE:-}" ]]; then
     ARGS+=("--countdown_mode" "$COUNTDOWN_MODE")
-fi
-
-# REMAINING_MODE: maps to --remaining_mode <value>
-if [[ -n "${REMAINING_MODE:-}" ]]; then
-    ARGS+=("--remaining_mode" "$REMAINING_MODE")
 fi
 
 # REMAINING_MODE: maps to --remaining_mode <value>
