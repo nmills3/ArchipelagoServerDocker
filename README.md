@@ -9,7 +9,7 @@ You can find built versions of the image on docker hub [here](https://hub.docker
 ## Volumes
 | Container Path | Required | Description |
 | -------------- | -------- | ----------- |
-| /worlds/ | Yes | The folder which will contain your generated multiworlds  |
+| /games/ | Yes | The folder which will contain your generated multiworld games  |
 | /app/custom_worlds | No | Contains custom .apworld files for unofficial games |
 
 
