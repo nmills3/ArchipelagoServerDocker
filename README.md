@@ -6,7 +6,7 @@ This docker image is not intended to be used for generating Archipelago multiwor
 ## Usage Guide
 You can find built versions of the image on docker hub [here](https://hub.docker.com/r/nmills688/archipelago-server/)
 
-##Volumes
+## Volumes
 | Container Path | Required | Description |
 | -------------- | -------- | ----------- |
 | /worlds/ | Yes | The folder which will contain your generated multiworlds  |
