@@ -9,11 +9,6 @@ SERVER_BIN="/app/MultiServer.py"
 # Initialize an array to hold arguments
 ARGS=()
 
-# GAME_PATH: added as a positional argument (no flag)
-if [[ -n "${GAME_PATH:-}" ]]; then
-    ARGS+=("$GAME_PATH")
-fi
-
 # PORT: maps to --port <value>
 if [[ -n "${PORT:-}" ]]; then
     ARGS+=("--port" "$PORT")
@@ -109,6 +104,11 @@ fi
 # LOG_NETWORK: maps to --log_network
 if [[ "${LOG_NETWORK:-}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
     ARGS+=("--log_network")
+fi
+
+# GAME_PATH: added as a positional argument (no flag)
+if [[ -n "${GAME_PATH:-}" ]]; then
+    ARGS+=("$GAME_PATH")
 fi
 
 # Optional: show the final command for debugging
