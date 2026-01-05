@@ -4,13 +4,12 @@ This project is intended to help setup simple Archipelago servers in a docker en
 This docker image is not intended to be used for generating Archipelago multiworlds or templates and is only for hosting a generated world. Please refer to the Archipelago website or App for information on how to generate a world
 
 ## Usage Guide
-You can find built versions of the image on docker hub [here](https://hub.docker.com/r/nmills688/archipelago-server/)
+You can find built versions of the image on [docker hub](https://hub.docker.com/r/nmills688/archipelago-server/)
 
 ## Volumes
 | Container Path | Required | Description |
 | -------------- | -------- | ----------- |
 | /games/ | Yes | The folder which will contain your generated multiworld games  |
-| /app/custom_worlds | No | Contains custom .apworld files for unofficial games |
 
 
 ## Environment Variables
