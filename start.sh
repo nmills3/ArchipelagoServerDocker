@@ -3,11 +3,8 @@
 # Exit on error or unset variable
 set -euo pipefail
 
-# Path to the game server binary
-SERVER_BIN="/app/MultiServer.py"
-
 # Initialize an array to hold arguments
-ARGS=()
+ARGS=("python" "/app/MultiServer.py")
 
 # PORT: maps to --port <value>
 if [[ -n "${PORT:-}" ]]; then
@@ -113,7 +110,39 @@ fi
 
 # Optional: show the final command for debugging
 echo "Starting Archipelago Server:"
-echo "python $SERVER_BIN ${ARGS[*]}"
+echo "${ARGS[*]}"
 
-# Execute the command
-exec "python" "$SERVER_BIN" "${ARGS[@]}"
+PIPE=$(mktemp -u)
+mkfifo "$PIPE"
+
+# Open FIFO for read/write to prevent blocking
+exec 3<> "$PIPE"
+
+# Start the Python server
+"${ARGS[@]}" <&3 &
+SERVER_PID=$!
+
+# ----------------------------
+# Signal handling
+# ----------------------------
+shutdown() {
+    echo "SIGTERM received, sending /exit"
+    echo "/exit" >&3
+
+    wait "$SERVER_PID"
+
+    exec 3>&-
+    rm -f "$PIPE"
+    exit 0
+}
+
+trap shutdown SIGTERM
+
+# ----------------------------
+# Wait for server to exit
+# ----------------------------
+wait "$SERVER_PID"
+
+# Cleanup on normal exit
+exec 3>&-
+rm -f "$PIPE"
